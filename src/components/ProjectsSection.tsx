@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink, Github, X } from "lucide-react";
 import { useState } from "react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 
 const projects = [
   {
@@ -9,6 +10,8 @@ const projects = [
     tech: ["Node.js", "NestJS", "PostgreSQL", "Redis", "BullMQ", "WebSocket", "AWS"],
     achievements: ["Multi-language & multi-currency support", "Real-time chat system", "Background job processing with Redis + BullMQ", "Scalable microservices architecture"],
     color: "from-primary to-code-blue",
+    github: "",
+    live: "",
   },
   {
     title: "ATAB — Membership Management",
@@ -16,6 +19,8 @@ const projects = [
     tech: ["Node.js", "Express.js", "PostgreSQL", "Redis", "Docker", "AWS"],
     achievements: ["Automated workflows for 1000+ users", "Real-time communication system", "Role-based access control", "Automated reporting & analytics"],
     color: "from-code-blue to-accent",
+    github: "",
+    live: "",
   },
   {
     title: "Skill Judge — Coding Platform",
@@ -23,73 +28,147 @@ const projects = [
     tech: ["NestJS", "React.js", "PostgreSQL", "Docker", "Stripe", "WebSocket"],
     achievements: ["Online compiler integration", "Quiz & assessment engine", "Stripe payment processing", "Real-time leaderboards"],
     color: "from-accent to-code-purple",
+    github: "",
+    live: "",
   },
 ];
 
-const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: number }) => {
-  const [hovered, setHovered] = useState(false);
+type Project = typeof projects[0];
 
+const ProjectCard = ({ project, index, onOpen }: { project: Project; index: number; onOpen: () => void }) => {
   return (
     <motion.div
-      className="relative group rounded-xl border border-border bg-card overflow-hidden card-hover glow-border-hover"
+      className="relative group rounded-xl border border-border bg-card overflow-hidden card-hover glow-border-hover cursor-pointer"
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.15 }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
+      onClick={onOpen}
     >
-      {/* Top gradient bar */}
       <div className={`h-1 bg-gradient-to-r ${project.color}`} />
-
       <div className="p-6">
         <div className="flex items-start justify-between mb-3">
           <h3 className="text-xl font-bold text-foreground">{project.title}</h3>
           <div className="flex gap-2">
-            <motion.button whileHover={{ scale: 1.1 }} className="p-1.5 rounded-lg hover:bg-secondary transition-colors">
-              <Github className="w-4 h-4 text-muted-foreground" />
-            </motion.button>
-            <motion.button whileHover={{ scale: 1.1 }} className="p-1.5 rounded-lg hover:bg-secondary transition-colors">
-              <ExternalLink className="w-4 h-4 text-muted-foreground" />
-            </motion.button>
+            {project.github && (
+              <motion.a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.1 }}
+                className="p-1.5 rounded-lg hover:bg-secondary transition-colors"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <Github className="w-4 h-4 text-muted-foreground" />
+              </motion.a>
+            )}
+            {project.live && (
+              <motion.a
+                href={project.live}
+                target="_blank"
+                rel="noopener noreferrer"
+                whileHover={{ scale: 1.1 }}
+                className="p-1.5 rounded-lg hover:bg-secondary transition-colors"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <ExternalLink className="w-4 h-4 text-muted-foreground" />
+              </motion.a>
+            )}
           </div>
         </div>
 
         <p className="text-sm text-muted-foreground mb-4 leading-relaxed">{project.description}</p>
 
-        {/* Tech stack chips */}
-        <div className="flex flex-wrap gap-2 mb-4">
-          {project.tech.map((t) => (
+        <div className="flex flex-wrap gap-2">
+          {project.tech.slice(0, 4).map((t) => (
             <span key={t} className="text-xs font-mono px-2.5 py-1 rounded-full bg-secondary text-primary border border-border">
               {t}
             </span>
           ))}
+          {project.tech.length > 4 && (
+            <span className="text-xs font-mono px-2.5 py-1 rounded-full bg-secondary text-muted-foreground border border-border">
+              +{project.tech.length - 4} more
+            </span>
+          )}
         </div>
 
-        {/* Expandable achievements */}
-        <motion.div
-          initial={false}
-          animate={{ height: hovered ? "auto" : 0, opacity: hovered ? 1 : 0 }}
-          className="overflow-hidden"
-        >
-          <div className="pt-3 border-t border-border">
-            <p className="text-xs font-mono text-primary mb-2">Key Achievements:</p>
-            <ul className="space-y-1">
-              {project.achievements.map((a, i) => (
-                <li key={i} className="text-sm text-muted-foreground flex gap-2">
-                  <span className="text-code-green">✓</span>
-                  <span>{a}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </motion.div>
+        <p className="text-xs text-muted-foreground mt-4 font-mono opacity-60">Click to view details →</p>
       </div>
     </motion.div>
   );
 };
 
+const ProjectModal = ({ project, open, onClose }: { project: Project | null; open: boolean; onClose: () => void }) => {
+  if (!project) return null;
+
+  return (
+    <Dialog open={open} onOpenChange={onClose}>
+      <DialogContent className="max-w-2xl bg-card border-border">
+        <DialogHeader>
+          <div className={`h-1.5 rounded-full bg-gradient-to-r ${project.color} mb-4 -mx-6 -mt-6`} />
+          <DialogTitle className="text-2xl font-bold text-foreground">{project.title}</DialogTitle>
+          <DialogDescription className="text-muted-foreground leading-relaxed mt-2">
+            {project.description}
+          </DialogDescription>
+        </DialogHeader>
+
+        <div className="space-y-5 mt-2">
+          <div>
+            <p className="text-xs font-mono text-primary mb-3">Tech Stack</p>
+            <div className="flex flex-wrap gap-2">
+              {project.tech.map((t) => (
+                <span key={t} className="text-xs font-mono px-3 py-1.5 rounded-full bg-secondary text-primary border border-border">
+                  {t}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <p className="text-xs font-mono text-primary mb-3">Key Achievements</p>
+            <ul className="space-y-2">
+              {project.achievements.map((a, i) => (
+                <li key={i} className="text-sm text-muted-foreground flex gap-2">
+                  <span className="text-code-green shrink-0">✓</span>
+                  <span>{a}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {(project.github || project.live) && (
+            <div className="flex gap-3 pt-2">
+              {project.github && (
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-4 py-2 rounded-lg border border-border bg-secondary hover:border-primary transition-colors text-sm font-medium text-foreground"
+                >
+                  <Github className="w-4 h-4" /> Source Code
+                </a>
+              )}
+              {project.live && (
+                <a
+                  href={project.live}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-primary to-accent text-primary-foreground text-sm font-medium"
+                >
+                  <ExternalLink className="w-4 h-4" /> Live Demo
+                </a>
+              )}
+            </div>
+          )}
+        </div>
+      </DialogContent>
+    </Dialog>
+  );
+};
+
 const ProjectsSection = () => {
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
   return (
     <section id="projects" className="section-padding bg-secondary/30">
       <div className="container mx-auto max-w-5xl">
@@ -105,10 +184,12 @@ const ProjectsSection = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, i) => (
-            <ProjectCard key={project.title} project={project} index={i} />
+            <ProjectCard key={project.title} project={project} index={i} onOpen={() => setSelectedProject(project)} />
           ))}
         </div>
       </div>
+
+      <ProjectModal project={selectedProject} open={!!selectedProject} onClose={() => setSelectedProject(null)} />
     </section>
   );
 };

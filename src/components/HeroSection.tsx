@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, ArrowDown } from "lucide-react";
+import { Github, Linkedin, Mail, ArrowDown, Download, Twitter, Globe } from "lucide-react";
 
 const roles = [
   "Backend Software Developer",
@@ -36,6 +36,8 @@ const HeroSection = () => {
     { icon: Mail, href: "mailto:srabon@example.com", label: "Email" },
     { icon: Linkedin, href: "https://linkedin.com/in/srabon-barua", label: "LinkedIn" },
     { icon: Github, href: "https://github.com/srabon-barua", label: "GitHub" },
+    { icon: Twitter, href: "https://twitter.com/srabon-barua", label: "Twitter" },
+    { icon: Globe, href: "https://srabon.dev", label: "Website" },
   ];
 
   return (
@@ -106,15 +108,35 @@ const HeroSection = () => {
               </motion.a>
             ))}
           </motion.div>
+
+          {/* Download Resume Button */}
+          <motion.div
+            className="mt-8"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1 }}
+          >
+            <motion.a
+              href="/resume.pdf"
+              download
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-primary to-accent text-primary-foreground font-semibold text-sm transition-all glow-border"
+            >
+              <Download className="w-4 h-4" />
+              Download Resume
+            </motion.a>
+          </motion.div>
         </motion.div>
 
-        <motion.div
-          className="absolute bottom-10 left-1/2 -translate-x-1/2"
+        <motion.a
+          href="#about"
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 cursor-pointer"
           animate={{ y: [0, 8, 0] }}
           transition={{ repeat: Infinity, duration: 2 }}
         >
           <ArrowDown className="w-5 h-5 text-muted-foreground" />
-        </motion.div>
+        </motion.a>
       </div>
     </section>
   );

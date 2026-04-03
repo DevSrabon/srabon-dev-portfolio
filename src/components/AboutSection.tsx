@@ -5,15 +5,15 @@ const codeLines = [
   { text: "const developer = {", color: "text-code-purple" },
   { text: '  name: "Srabon Barua",', color: "text-foreground", indent: true },
   { text: '  role: "Backend Software Developer",', color: "text-foreground", indent: true },
-  { text: "  experience: 3,", color: "text-foreground", indent: true },
-  { text: '  location: "Bangladesh",', color: "text-foreground", indent: true },
+  { text: "  experience_years: 3,", color: "text-foreground", indent: true },
+  { text: '  location: "Dhaka, Bangladesh",', color: "text-foreground", indent: true },
   { text: "  expertise: [", color: "text-foreground", indent: true },
   { text: '    "Scalable APIs & Microservices",', color: "text-code-green", indent: true, extra: true },
-  { text: '    "Cloud-Native Deployments (AWS)",', color: "text-code-green", indent: true, extra: true },
-  { text: '    "Distributed Systems & Caching",', color: "text-code-green", indent: true, extra: true },
-  { text: '    "Database Design & Optimization",', color: "text-code-green", indent: true, extra: true },
+  { text: '    "Cloud-Native Systems (AWS)",', color: "text-code-green", indent: true, extra: true },
+  { text: '    "Query Optimization (35% Latency Reduction)",', color: "text-code-green", indent: true, extra: true },
+  { text: '    "Robust CI/CD Pipelines",', color: "text-code-green", indent: true, extra: true },
   { text: "  ],", color: "text-foreground", indent: true },
-  { text: '  passion: "Building robust backend systems"', color: "text-foreground", indent: true },
+  { text: '  passion: "Delivering high-impact, real-time backend solutions"', color: "text-foreground", indent: true },
   { text: "};", color: "text-code-purple" },
 ];
 
@@ -75,8 +75,9 @@ const AboutSection = () => {
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
         >
-          I specialize in designing and building high-performance backend architectures using Node.js, NestJS, and cloud services. 
-          I love tackling complex distributed systems challenges and optimizing application performance at scale.
+          Backend Software Developer with 3+ years of experience building scalable APIs and cloud-based systems. 
+          Proficient in Node.js, Express.js, PostgreSQL, MySQL, and AWS. Demonstrated expertise in fine-tuning query performance, 
+          reducing latency by up to 35%, and executing robust CI/CD pipelines.
         </motion.p>
       </div>
     </section>

@@ -5,31 +5,39 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } f
 
 const projects = [
   {
-    title: "Saba Al Wadi E-commerce",
-    description: "Full-featured multi-language, multi-currency e-commerce platform with real-time chat and background job handling.",
-    tech: ["Node.js", "NestJS", "PostgreSQL", "Redis", "BullMQ", "WebSocket", "AWS"],
-    achievements: ["Multi-language & multi-currency support", "Real-time chat system", "Background job processing with Redis + BullMQ", "Scalable microservices architecture"],
+    title: "Saba Al Wadi — E-commerce Platform",
+    description: "Fine-tuned multi-language, multi-currency e-commerce system supporting 5K+ concurrent users with real-time chat.",
+    tech: ["Next.js", "Node.js", "MySQL", "Socket.io"],
+    achievements: [
+      "Fine-tuned multi-language, multi-currency e-commerce system supporting 5K+ concurrent users.",
+      "Carried out real-time chat via Socket.io, boosting engagement 40%.",
+    ],
     color: "from-primary to-code-blue",
     github: "",
-    live: "",
+    live: "https://sabaalwadi.com",
   },
   {
     title: "ATAB — Membership Management",
-    description: "Automated membership management system with real-time communication for 1000+ users.",
-    tech: ["Node.js", "Express.js", "PostgreSQL", "Redis", "Docker", "AWS"],
-    achievements: ["Automated workflows for 1000+ users", "Real-time communication system", "Role-based access control", "Automated reporting & analytics"],
+    description: "Automated workflows for 1,000+ users, reducing manual tasks by 50% and designed scalable APIs.",
+    tech: ["Node.js", "MySQL", "Express.js"],
+    achievements: [
+      "Automated workflows for 1,000+ users, reducing manual tasks by 50% and designed scalable APIs.",
+    ],
     color: "from-code-blue to-accent",
     github: "",
-    live: "",
+    live: "https://atab.org.bd",
   },
   {
     title: "Skill Judge — Coding Platform",
-    description: "Online coding assessment platform with compiler integration, quizzes, and payment processing.",
-    tech: ["NestJS", "React.js", "PostgreSQL", "Docker", "Stripe", "WebSocket"],
-    achievements: ["Online compiler integration", "Quiz & assessment engine", "Stripe payment processing", "Real-time leaderboards"],
+    description: "Built online compiler (Judge0 API) and quiz system; integrated Stripe payments and REST API principles.",
+    tech: ["React.js", "Node.js", "MongoDB", "Judge0", "Stripe"],
+    achievements: [
+      "Built online compiler (Judge0 API) and quiz system.",
+      "Integrated Stripe payments and REST API principles.",
+    ],
     color: "from-accent to-code-purple",
     github: "",
-    live: "",
+    live: "https://skill-judge.vercel.app",
   },
 ];
 

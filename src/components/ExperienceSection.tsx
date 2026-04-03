@@ -4,33 +4,32 @@ import { Briefcase } from "lucide-react";
 const experiences = [
   {
     company: "M360 ICT",
-    role: "Backend Software Developer",
-    period: "2023 – Present",
+    role: "Junior Backend Developer",
+    period: "Apr 2023 – Present",
     achievements: [
-      "Reduced API response time by 35% through query optimization and caching strategies",
-      "Designed microservices architecture handling 10K+ daily requests",
-      "Implemented Redis-based caching layer reducing database load by 50%",
-      "Led migration from monolith to microservices using NestJS",
+      "Boosted performance of 15+ RESTful APIs serving 10K+ monthly users, increasing reliability and uptime by 25%.",
+      "Utilized query optimization and caching strategies, reducing API response time by 35%.",
+      "Built scalable backend services with Node.js, Express.js, PostgreSQL, and MySQL.",
+      "Executed CI/CD pipelines with Jenkins and GitHub Actions, cutting deployment time by 40%.",
+      "Fine-tuned database efficiency, lowering query execution time by 30%.",
     ],
   },
   {
     company: "Canopus Lab",
-    role: "Software Developer",
-    period: "2022 – 2023",
+    role: "Junior Web Developer",
+    period: "Sep 2023 – Dec 2023",
     achievements: [
-      "Built RESTful APIs serving 5K+ active users with 99.9% uptime",
-      "Implemented CI/CD pipelines reducing deployment time by 60%",
-      "Developed automated testing suite with 85% code coverage",
+      "Refined responsive web apps using React.js and Next.js, improving page load speed by 30%.",
+      "Integrated REST APIs and employed performance improvements, resulting in better UX metrics and 20% faster interactions.",
     ],
   },
   {
     company: "Unicorniz Innovation",
-    role: "Junior Software Developer",
-    period: "2021 – 2022",
+    role: "Full Stack Developer Intern",
+    period: "Apr 2023 – Aug 2023",
     achievements: [
-      "Developed 15+ API endpoints for e-commerce platform",
-      "Optimized database queries improving page load by 40%",
-      "Integrated third-party payment gateways (Stripe, SSLCommerz)",
+      "Built full-stack features using React, Next.js, Express, and MongoDB.",
+      "Contributed to scalable architecture using TypeScript, Prisma, and GraphQL.",
     ],
   },
 ];

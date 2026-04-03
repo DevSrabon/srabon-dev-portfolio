@@ -14,9 +14,9 @@ const ContactSection = () => {
   };
 
   const links = [
-    { icon: Mail, label: "srabon@example.com", href: "mailto:srabon@example.com" },
+    { icon: Mail, label: "et.srabon@gmail.com", href: "mailto:et.srabon@gmail.com" },
     { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com/in/srabon-barua" },
-    { icon: Github, label: "GitHub", href: "https://github.com/srabon-barua" },
+    { icon: Github, label: "GitHub", href: "https://github.com/et-srabon" },
   ];
 
   return (

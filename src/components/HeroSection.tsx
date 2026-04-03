@@ -5,7 +5,7 @@ import profileImg from "@/assets/profile.jpeg";
 
 const roles = [
   "Backend Software Developer",
-  "Node.js & NestJS Expert",
+  "Node.js & Express.js Expert",
   "Cloud & DevOps Enthusiast",
   "Distributed Systems Engineer",
 ];
@@ -34,9 +34,9 @@ const HeroSection = () => {
   }, [text, deleting, roleIndex]);
 
   const socials = [
-    { icon: Mail, href: "mailto:srabon@example.com", label: "Email" },
+    { icon: Mail, href: "mailto:et.srabon@gmail.com", label: "Email" },
     { icon: Linkedin, href: "https://linkedin.com/in/srabon-barua", label: "LinkedIn" },
-    { icon: Github, href: "https://github.com/srabon-barua", label: "GitHub" },
+    { icon: Github, href: "https://github.com/et-srabon", label: "GitHub" },
   ];
 
   return (

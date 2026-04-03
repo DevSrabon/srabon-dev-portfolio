@@ -23,7 +23,7 @@ const AboutSection = () => {
 
   return (
     <section id="about" className="section-padding">
-      <div className="container mx-auto max-w-4xl">
+      <div className="container mx-auto max-w-4xl px-1 sm:px-4">
         <motion.h2
           className="text-3xl md:text-4xl font-bold text-center mb-12"
           initial={{ opacity: 0, y: 20 }}

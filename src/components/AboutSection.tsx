@@ -73,7 +73,7 @@ const AboutSection = () => {
                 transition={{ delay: i * 0.06 }}
                 className="flex whitespace-pre"
               >
-                <span className="text-muted-foreground/40 w-6 sm:w-8 text-right mr-3 sm:mr-4 select-none text-[10px] sm:text-xs leading-6">
+                <span className="text-muted-foreground/40 w-6 sm:w-8 shrink-0 text-right mr-3 sm:mr-4 select-none text-[10px] sm:text-xs leading-6">
                   {i + 1}
                 </span>
                 <span

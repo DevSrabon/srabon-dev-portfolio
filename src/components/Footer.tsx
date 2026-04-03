@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { Heart } from "lucide-react";
 
 const Footer = () => (
   <footer className="py-8 border-t border-border">
@@ -10,9 +9,11 @@ const Footer = () => (
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
       >
-        {"<"} Built with <Heart className="w-3.5 h-3.5 text-destructive inline" /> by Srabon Barua {"/>"}
+        {"<"} Developed by Srabon Barua {"/>"}
       </motion.p>
-      <p className="text-xs text-muted-foreground/60 mt-2">© {new Date().getFullYear()} All rights reserved.</p>
+      <p className="text-xs text-muted-foreground/60 mt-2">
+        © {new Date().getFullYear()} All rights reserved.
+      </p>
     </div>
   </footer>
 );

@@ -1,9 +1,13 @@
 import { motion } from "framer-motion";
-import { Mail, Linkedin, Github, Send } from "lucide-react";
+import { Github, Linkedin, Mail, Send } from "lucide-react";
 import { useState, type FormEvent } from "react";
 
 const ContactSection = () => {
-  const [formState, setFormState] = useState({ name: "", email: "", message: "" });
+  const [formState, setFormState] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
   const [submitted, setSubmitted] = useState(false);
 
   const handleSubmit = (e: FormEvent) => {
@@ -14,9 +18,17 @@ const ContactSection = () => {
   };
 
   const links = [
-    { icon: Mail, label: "et.srabon@gmail.com", href: "mailto:et.srabon@gmail.com" },
-    { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com/in/srabon-barua" },
-    { icon: Github, label: "GitHub", href: "https://github.com/et-srabon" },
+    {
+      icon: Mail,
+      label: "et.srabon@gmail.com",
+      href: "mailto:et.srabon@gmail.com",
+    },
+    {
+      icon: Linkedin,
+      label: "LinkedIn",
+      href: "https://linkedin.com/in/srabon-barua",
+    },
+    { icon: Github, label: "GitHub", href: "https://github.com/devsrabon" },
   ];
 
   return (
@@ -28,7 +40,9 @@ const ContactSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <span className="text-code-orange font-mono text-lg block mb-2">{"// 05"}</span>
+          <span className="text-code-orange font-mono text-lg block mb-2">
+            {"// 05"}
+          </span>
           Get In <span className="gradient-text">Touch</span>
         </motion.h2>
 
@@ -41,7 +55,8 @@ const ContactSection = () => {
             viewport={{ once: true }}
           >
             <p className="text-muted-foreground leading-relaxed">
-              I'm currently open to new opportunities. Whether you have a project in mind or just want to connect, feel free to reach out!
+              I'm currently open to new opportunities. Whether you have a
+              project in mind or just want to connect, feel free to reach out!
             </p>
 
             <div className="space-y-4">
@@ -55,7 +70,9 @@ const ContactSection = () => {
                   whileHover={{ x: 5 }}
                 >
                   <Icon className="w-5 h-5 text-primary" />
-                  <span className="text-muted-foreground group-hover:text-foreground transition-colors text-sm">{label}</span>
+                  <span className="text-muted-foreground group-hover:text-foreground transition-colors text-sm">
+                    {label}
+                  </span>
                 </motion.a>
               ))}
             </div>
@@ -73,38 +90,52 @@ const ContactSection = () => {
               <span className="terminal-dot bg-destructive" />
               <span className="terminal-dot bg-code-yellow" />
               <span className="terminal-dot bg-code-green" />
-              <span className="ml-3 text-xs font-mono text-muted-foreground">contact.sh</span>
+              <span className="ml-3 text-xs font-mono text-muted-foreground">
+                contact.sh
+              </span>
             </div>
             <div className="p-6 space-y-4">
               <div>
-                <label className="text-xs font-mono text-primary mb-1.5 block">$ name</label>
+                <label className="text-xs font-mono text-primary mb-1.5 block">
+                  $ name
+                </label>
                 <input
                   type="text"
                   required
                   value={formState.name}
-                  onChange={(e) => setFormState({ ...formState, name: e.target.value })}
+                  onChange={(e) =>
+                    setFormState({ ...formState, name: e.target.value })
+                  }
                   className="w-full px-4 py-2.5 rounded-lg bg-secondary border border-border focus:border-primary focus:outline-none text-sm font-mono text-foreground transition-colors"
                   placeholder="Your name..."
                 />
               </div>
               <div>
-                <label className="text-xs font-mono text-primary mb-1.5 block">$ email</label>
+                <label className="text-xs font-mono text-primary mb-1.5 block">
+                  $ email
+                </label>
                 <input
                   type="email"
                   required
                   value={formState.email}
-                  onChange={(e) => setFormState({ ...formState, email: e.target.value })}
+                  onChange={(e) =>
+                    setFormState({ ...formState, email: e.target.value })
+                  }
                   className="w-full px-4 py-2.5 rounded-lg bg-secondary border border-border focus:border-primary focus:outline-none text-sm font-mono text-foreground transition-colors"
                   placeholder="your@email.com"
                 />
               </div>
               <div>
-                <label className="text-xs font-mono text-primary mb-1.5 block">$ message</label>
+                <label className="text-xs font-mono text-primary mb-1.5 block">
+                  $ message
+                </label>
                 <textarea
                   required
                   rows={4}
                   value={formState.message}
-                  onChange={(e) => setFormState({ ...formState, message: e.target.value })}
+                  onChange={(e) =>
+                    setFormState({ ...formState, message: e.target.value })
+                  }
                   className="w-full px-4 py-2.5 rounded-lg bg-secondary border border-border focus:border-primary focus:outline-none text-sm font-mono text-foreground resize-none transition-colors"
                   placeholder="Your message..."
                 />

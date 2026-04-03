@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, ArrowDown, Download } from "lucide-react";
 import profileImg from "@/assets/profile.jpeg";
+import { motion } from "framer-motion";
+import { ArrowDown, Download, Github, Linkedin, Mail } from "lucide-react";
+import { useEffect, useState } from "react";
 
 const roles = [
   "Backend Software Developer",
@@ -20,7 +20,10 @@ const HeroSection = () => {
     let timeout: ReturnType<typeof setTimeout>;
 
     if (!deleting && text.length < current.length) {
-      timeout = setTimeout(() => setText(current.slice(0, text.length + 1)), 60);
+      timeout = setTimeout(
+        () => setText(current.slice(0, text.length + 1)),
+        60,
+      );
     } else if (!deleting && text.length === current.length) {
       timeout = setTimeout(() => setDeleting(true), 2000);
     } else if (deleting && text.length > 0) {
@@ -35,17 +38,25 @@ const HeroSection = () => {
 
   const socials = [
     { icon: Mail, href: "mailto:et.srabon@gmail.com", label: "Email" },
-    { icon: Linkedin, href: "https://linkedin.com/in/srabon-barua", label: "LinkedIn" },
-    { icon: Github, href: "https://github.com/et-srabon", label: "GitHub" },
+    {
+      icon: Linkedin,
+      href: "https://linkedin.com/in/srabon-barua",
+      label: "LinkedIn",
+    },
+    { icon: Github, href: "https://github.com/devsrabon", label: "GitHub" },
   ];
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-4">
       {/* Background grid */}
-      <div className="absolute inset-0 opacity-[0.03]" style={{
-        backgroundImage: "linear-gradient(hsl(var(--primary)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--primary)) 1px, transparent 1px)",
-        backgroundSize: "60px 60px"
-      }} />
+      <div
+        className="absolute inset-0 opacity-[0.03]"
+        style={{
+          backgroundImage:
+            "linear-gradient(hsl(var(--primary)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--primary)) 1px, transparent 1px)",
+          backgroundSize: "60px 60px",
+        }}
+      />
 
       {/* Gradient orbs */}
       <div className="absolute top-1/4 -left-32 w-64 md:w-96 h-64 md:h-96 rounded-full bg-primary/10 blur-[100px]" />
@@ -100,7 +111,8 @@ const HeroSection = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6 }}
           >
-            3+ years building scalable backend systems, RESTful APIs, and cloud-native applications
+            3+ years building scalable backend systems, RESTful APIs, and
+            cloud-native applications
           </motion.p>
 
           <motion.div

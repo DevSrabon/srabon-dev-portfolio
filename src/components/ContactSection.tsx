@@ -54,7 +54,7 @@ const ContactSection = () => {
 
   return (
     <section id="contact" className="section-padding relative overflow-hidden">
-      <div className="container mx-auto max-w-5xl px-1 sm:px-4">
+      <div className="container mx-auto max-w-5xl px-2 sm:px-4">
         <motion.h2
           className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-12 md:mb-20"
           initial={{ opacity: 0, y: 20 }}

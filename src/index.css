@@ -35,8 +35,8 @@
     --code-blue: 210 90% 60%;
     --code-purple: 265 70% 60%;
     --code-orange: 25 90% 55%;
-    --gradient-start: 174 72% 46%;
-    --gradient-end: 265 70% 60%;
+    --gradient-start: 210 90% 55%;
+    --gradient-end: 174 72% 46%;
   }
 
   .dark {

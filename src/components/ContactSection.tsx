@@ -68,7 +68,6 @@ const ContactSection = () => {
         </motion.h2>
 
         <div className="grid lg:grid-cols-5 gap-10 md:gap-16 items-start">
-          {/* Contact info */}
           <motion.div
             className="lg:col-span-2 space-y-8"
             initial={{ opacity: 0, x: -20 }}
@@ -107,7 +106,6 @@ const ContactSection = () => {
             </div>
           </motion.div>
 
-          {/* Form */}
           <motion.form
             onSubmit={handleSubmit}
             className="lg:col-span-3 terminal-window glow-border shadow-2xl"

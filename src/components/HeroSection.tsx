@@ -49,10 +49,8 @@ const HeroSection = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-4">
-      {/* Background patterns */}
       <FloatingCode />
 
-      {/* Background grid */}
       <div
         className="absolute inset-0 opacity-[0.03]"
         style={{
@@ -62,7 +60,6 @@ const HeroSection = () => {
         }}
       />
 
-      {/* Gradient orbs */}
       <div className="absolute top-1/4 -left-32 w-64 md:w-96 h-64 md:h-96 rounded-full bg-primary/10 blur-[100px]" />
       <div className="absolute bottom-1/4 -right-32 w-64 md:w-96 h-64 md:h-96 rounded-full bg-accent/10 blur-[100px]" />
 
@@ -73,7 +70,6 @@ const HeroSection = () => {
           transition={{ duration: 0.8 }}
           className="flex flex-col items-center"
         >
-          {/* Profile Image */}
           <motion.div
             className="mb-8 relative"
             initial={{ opacity: 0, scale: 0.8 }}
@@ -144,7 +140,6 @@ const HeroSection = () => {
             ))}
           </motion.div>
 
-          {/* Download Resume Button */}
           <motion.div
             className="mt-10"
             initial={{ opacity: 0, y: 20 }}

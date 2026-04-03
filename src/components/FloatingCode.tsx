@@ -19,7 +19,7 @@ const FloatingCode = () => {
     const newParticles = Array.from({ length: count }).map((_, i) => ({
       id: i,
       text: codeSnippets[Math.floor(Math.random() * codeSnippets.length)],
-      x: Math.random() * 90 + 5, // Keep slightly away from edges
+      x: Math.random() * 90 + 5,
       y: Math.random() * 90 + 5,
       duration: 15 + Math.random() * 25,
       delay: Math.random() * 10,

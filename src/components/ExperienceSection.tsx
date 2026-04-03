@@ -49,7 +49,6 @@ const ExperienceSection = () => {
         </motion.h2>
 
         <div className="relative">
-          {/* Timeline line */}
           <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-px bg-border md:-translate-x-px" />
 
           {experiences.map((exp, i) => (
@@ -63,7 +62,6 @@ const ExperienceSection = () => {
               viewport={{ once: true }}
               transition={{ delay: i * 0.15 }}
             >
-              {/* Dot */}
               <div className="absolute left-6 md:left-1/2 w-3 h-3 rounded-full bg-primary -translate-x-1.5 mt-2 z-10 animate-pulse_glow" />
 
               <div className={`ml-14 md:ml-0 md:w-1/2 ${i % 2 === 0 ? "md:pr-12 md:text-right" : "md:pl-12"}`}>

@@ -147,8 +147,9 @@ const HeroSection = () => {
             transition={{ delay: 1 }}
           >
             <motion.a
-              href="/resume.pdf"
-              download
+              href="https://drive.google.com/file/d/1Zf0gXrHbiyJx6hgLAzLl3VysyzCH_51f/view?usp=drive_link"
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_auto] animate-gradient text-primary-foreground font-bold text-sm sm:text-base transition-all shadow-xl shadow-primary/20 glow-border"

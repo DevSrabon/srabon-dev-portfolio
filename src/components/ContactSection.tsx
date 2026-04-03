@@ -1,3 +1,4 @@
+import emailjs from "@emailjs/browser";
 import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, Send } from "lucide-react";
 import { useState, type FormEvent } from "react";
@@ -8,13 +9,33 @@ const ContactSection = () => {
     email: "",
     message: "",
   });
+  const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 3000);
-    setFormState({ name: "", email: "", message: "" });
+    setLoading(true);
+
+    try {
+      await emailjs.send(
+        "service_ffdi5jk",
+        "template_k7wtl0h",
+        {
+          from_name: formState.name,
+          reply_to: formState.email,
+          message: formState.message,
+        },
+        "VSzT2s0VVTgX6oA3L",
+      );
+
+      setSubmitted(true);
+      setFormState({ name: "", email: "", message: "" });
+      setTimeout(() => setSubmitted(false), 5000);
+    } catch (error) {
+      console.error("EmailJS submission error:", error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const links = [
@@ -154,11 +175,23 @@ const ContactSection = () => {
               </div>
               <motion.button
                 type="submit"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full py-4 rounded-xl bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_auto] animate-gradient text-primary-foreground font-bold text-sm sm:text-base flex items-center justify-center gap-3 transition-all shadow-xl shadow-primary/20"
+                disabled={loading || submitted}
+                whileHover={{ scale: loading || submitted ? 1 : 1.02 }}
+                whileTap={{ scale: loading || submitted ? 1 : 0.98 }}
+                className={`w-full py-4 rounded-xl bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_auto] animate-gradient text-primary-foreground font-bold text-sm sm:text-base flex items-center justify-center gap-3 transition-all shadow-xl shadow-primary/20 ${
+                  loading || submitted
+                    ? "opacity-70 cursor-not-allowed"
+                    : "hover:shadow-primary/40"
+                }`}
               >
-                {submitted ? (
+                {loading ? (
+                  <>
+                    <div className="w-5 h-5 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" />
+                    <span className="font-mono tracking-widest uppercase">
+                      Sending...
+                    </span>
+                  </>
+                ) : submitted ? (
                   <span className="font-mono tracking-widest uppercase">
                     Message sent! ✓
                   </span>

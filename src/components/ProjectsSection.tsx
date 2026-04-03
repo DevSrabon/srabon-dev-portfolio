@@ -1,12 +1,61 @@
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { motion } from "framer-motion";
-import { ExternalLink, Github, X } from "lucide-react";
+import { ExternalLink, Github } from "lucide-react";
 import { useState } from "react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 
 const projects = [
   {
+    title: "Sohi Airport Services — Meet & Assist",
+    description:
+      "Built a B2C platform supporting customers, agents, and vendors for airport services like lounge access and baggage wrapping.",
+    tech: ["Node.js", "React", "PostgreSQL", "SSL Commerz", "bKash"],
+    achievements: [
+      "Built a B2C platform supporting customers, agents, and vendors for airport services.",
+      "Integrated payment gateways: SSL Commerz and bKash for seamless transactions.",
+      "Designed scalable APIs and real-time booking features, improving booking efficiency by 35%.",
+    ],
+    color: "from-code-green to-primary",
+    github: "",
+    live: "https://sohi.com.bd",
+  },
+  {
+    title: "AMCHAM Membership Management",
+    description:
+      "Engineered a membership management system featuring event RSVP workflows, double-entry accounting, and a dedicated member panel.",
+    tech: ["Node.js", "MySQL", "Express.js"],
+    achievements: [
+      "Engineered a membership management system featuring event RSVP workflows and a dedicated member panel.",
+      "Implemented double-entry accounting to ensure accurate financial tracking and reporting.",
+      "Streamlined member operations and event handling, improving administrative efficiency.",
+    ],
+    color: "from-primary to-code-blue",
+    github: "",
+    live: "https://member.amchambd.com/",
+  },
+  {
+    title: "Tovozo — Hotel Job Portal",
+    description:
+      "Hospitality job portal connecting hoteliers and job seekers with structured role management and application tracking.",
+    tech: ["Node.js", "PostgreSQL", "Flutter"],
+    achievements: [
+      "Built a job portal platform tailored for the hospitality industry, connecting hoteliers and job seekers.",
+      "Designed and implemented admin panel and job seeker modules for efficient job posting.",
+      "Improved hiring workflow efficiency through structured application tracking.",
+    ],
+    color: "from-code-blue to-accent",
+    github: "",
+    live: "https://tovozo.com/",
+  },
+  {
     title: "Saba Al Wadi — E-commerce Platform",
-    description: "Fine-tuned multi-language, multi-currency e-commerce system supporting 5K+ concurrent users with real-time chat.",
+    description:
+      "Fine-tuned multi-language, multi-currency e-commerce system supporting 5K+ concurrent users with real-time chat.",
     tech: ["Next.js", "Node.js", "MySQL", "Socket.io"],
     achievements: [
       "Fine-tuned multi-language, multi-currency e-commerce system supporting 5K+ concurrent users.",
@@ -18,7 +67,8 @@ const projects = [
   },
   {
     title: "ATAB — Membership Management",
-    description: "Automated workflows for 1,000+ users, reducing manual tasks by 50% and designed scalable APIs.",
+    description:
+      "Automated workflows for 1,000+ users, reducing manual tasks by 50% and designed scalable APIs.",
     tech: ["Node.js", "MySQL", "Express.js"],
     achievements: [
       "Automated workflows for 1,000+ users, reducing manual tasks by 50% and designed scalable APIs.",
@@ -29,7 +79,8 @@ const projects = [
   },
   {
     title: "Skill Judge — Coding Platform",
-    description: "Built online compiler (Judge0 API) and quiz system; integrated Stripe payments and REST API principles.",
+    description:
+      "Built online compiler (Judge0 API) and quiz system; integrated Stripe payments and REST API principles.",
     tech: ["React.js", "Node.js", "MongoDB", "Judge0", "Stripe"],
     achievements: [
       "Built online compiler (Judge0 API) and quiz system.",
@@ -41,9 +92,17 @@ const projects = [
   },
 ];
 
-type Project = typeof projects[0];
+type Project = (typeof projects)[0];
 
-const ProjectCard = ({ project, index, onOpen }: { project: Project; index: number; onOpen: () => void }) => {
+const ProjectCard = ({
+  project,
+  index,
+  onOpen,
+}: {
+  project: Project;
+  index: number;
+  onOpen: () => void;
+}) => {
   return (
     <motion.div
       className="relative group rounded-xl border border-border bg-card overflow-hidden card-hover glow-border-hover cursor-pointer"
@@ -95,11 +154,16 @@ const ProjectCard = ({ project, index, onOpen }: { project: Project; index: numb
           </div>
         </div>
 
-        <p className="text-sm text-muted-foreground mb-4 leading-relaxed">{project.description}</p>
+        <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+          {project.description}
+        </p>
 
         <div className="flex flex-wrap gap-2">
           {project.tech.slice(0, 4).map((t) => (
-            <span key={t} className="text-xs font-mono px-2.5 py-1 rounded-full bg-secondary text-primary border border-border">
+            <span
+              key={t}
+              className="text-xs font-mono px-2.5 py-1 rounded-full bg-secondary text-primary border border-border"
+            >
               {t}
             </span>
           ))}
@@ -110,21 +174,35 @@ const ProjectCard = ({ project, index, onOpen }: { project: Project; index: numb
           )}
         </div>
 
-        <p className="text-xs text-muted-foreground mt-4 font-mono opacity-60">Click to view details →</p>
+        <p className="text-xs text-muted-foreground mt-4 font-mono opacity-60">
+          Click to view details →
+        </p>
       </div>
     </motion.div>
   );
 };
 
-const ProjectModal = ({ project, open, onClose }: { project: Project | null; open: boolean; onClose: () => void }) => {
+const ProjectModal = ({
+  project,
+  open,
+  onClose,
+}: {
+  project: Project | null;
+  open: boolean;
+  onClose: () => void;
+}) => {
   if (!project) return null;
 
   return (
     <Dialog open={open} onOpenChange={onClose}>
       <DialogContent className="max-w-2xl bg-card border-border">
         <DialogHeader>
-          <div className={`h-1.5 rounded-full bg-gradient-to-r ${project.color} mb-4 -mx-6 -mt-6`} />
-          <DialogTitle className="text-2xl font-bold text-foreground">{project.title}</DialogTitle>
+          <div
+            className={`h-1.5 rounded-full bg-gradient-to-r ${project.color} mb-4 -mx-6 -mt-6`}
+          />
+          <DialogTitle className="text-2xl font-bold text-foreground">
+            {project.title}
+          </DialogTitle>
           <DialogDescription className="text-muted-foreground leading-relaxed mt-2">
             {project.description}
           </DialogDescription>
@@ -135,7 +213,10 @@ const ProjectModal = ({ project, open, onClose }: { project: Project | null; ope
             <p className="text-xs font-mono text-primary mb-3">Tech Stack</p>
             <div className="flex flex-wrap gap-2">
               {project.tech.map((t) => (
-                <span key={t} className="text-xs font-mono px-3 py-1.5 rounded-full bg-secondary text-primary border border-border">
+                <span
+                  key={t}
+                  className="text-xs font-mono px-3 py-1.5 rounded-full bg-secondary text-primary border border-border"
+                >
                   {t}
                 </span>
               ))}
@@ -143,10 +224,15 @@ const ProjectModal = ({ project, open, onClose }: { project: Project | null; ope
           </div>
 
           <div>
-            <p className="text-xs font-mono text-primary mb-3">Key Achievements</p>
+            <p className="text-xs font-mono text-primary mb-3">
+              Key Achievements
+            </p>
             <ul className="space-y-2">
               {project.achievements.map((a, i) => (
-                <li key={i} className="text-sm text-muted-foreground flex gap-2">
+                <li
+                  key={i}
+                  className="text-sm text-muted-foreground flex gap-2"
+                >
                   <span className="text-code-green shrink-0">✓</span>
                   <span>{a}</span>
                 </li>
@@ -196,7 +282,9 @@ const ProjectsSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <span className="text-code-purple font-mono text-lg block mb-2">{"// 04"}</span>
+          <span className="text-code-purple font-mono text-lg block mb-2">
+            {"// 04"}
+          </span>
           Featured <span className="gradient-text">Projects</span>
         </motion.h2>
 
@@ -212,7 +300,11 @@ const ProjectsSection = () => {
         </div>
       </div>
 
-      <ProjectModal project={selectedProject} open={!!selectedProject} onClose={() => setSelectedProject(null)} />
+      <ProjectModal
+        project={selectedProject}
+        open={!!selectedProject}
+        onClose={() => setSelectedProject(null)}
+      />
     </section>
   );
 };

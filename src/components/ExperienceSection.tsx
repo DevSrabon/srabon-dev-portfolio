@@ -71,13 +71,20 @@ const ExperienceSection = () => {
                   <div className="flex items-center gap-2 mb-2 justify-start">
                     <Briefcase className="w-4 h-4 text-primary" />
                     <span className="font-mono text-xs text-primary">{exp.period}</span>
+                    <span className="ml-auto font-mono text-[10px] text-muted-foreground/40 hidden md:block">
+                      commit: {Math.random().toString(16).substring(2, 9)}
+                    </span>
                   </div>
-                  <h3 className="text-lg font-bold text-foreground">{exp.company}</h3>
-                  <p className="text-sm text-muted-foreground mb-3">{exp.role}</p>
-                  <ul className="space-y-1.5 text-left">
+                  <h3 className="text-lg font-bold text-foreground tracking-tight">{exp.company}</h3>
+                  <p className="text-xs font-mono text-code-blue mb-4 bg-secondary/50 px-2 py-1 rounded inline-block">
+                    {`const role = "${exp.role}";`}
+                  </p>
+                  <ul className="space-y-1.5 text-left border-l border-primary/20 pl-4 ml-1">
                     {exp.achievements.map((a, j) => (
-                      <li key={j} className="text-sm text-muted-foreground flex gap-2">
-                        <span className="text-primary mt-1 shrink-0">▹</span>
+                      <li key={j} className="text-sm text-muted-foreground flex gap-2 group">
+                        <span className="text-primary/40 mt-1 shrink-0 group-hover:text-primary transition-colors">
+                          {">"}
+                        </span>
                         <span>{a}</span>
                       </li>
                     ))}

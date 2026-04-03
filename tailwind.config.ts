@@ -8,9 +8,19 @@ export default {
     container: {
       center: true,
       padding: "2rem",
-      screens: { "2xl": "1400px" },
+    },
+    screens: {
+      xs: "400px",
+      sm: "640px",
+      md: "768px",
+      lg: "1024px",
+      xl: "1280px",
+      "2xl": "1400px",
     },
     extend: {
+      spacing: {
+        navbar: "4rem",
+      },
       fontFamily: {
         sans: ["Inter", "system-ui", "sans-serif"],
         heading: ["Inter", "system-ui", "sans-serif"],

@@ -7,6 +7,7 @@ const skillGroups = [
     color: "from-primary to-code-blue",
     skills: [
       { name: "Node.js", level: 95 },
+      { name: "Python", level: 85 },
       { name: "Express.js", level: 92 },
       { name: "NestJS", level: 88 },
       { name: "REST APIs", level: 95 },
@@ -18,6 +19,7 @@ const skillGroups = [
     title: "Frontend",
     color: "from-code-blue to-accent",
     skills: [
+      { name: "JavaScript", level: 95 },
       { name: "React.js", level: 85 },
       { name: "Next.js", level: 82 },
       { name: "Redux", level: 80 },
@@ -75,20 +77,22 @@ const SkillsSection = () => {
     <section id="skills" className="section-padding bg-secondary/30">
       <div className="container mx-auto max-w-5xl">
         <motion.h2
-          className="text-3xl md:text-4xl font-bold text-center mb-12"
+          className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-10 md:mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <span className="text-code-green font-mono text-lg block mb-2">{"// 02"}</span>
+          <span className="text-code-green font-mono text-base md:text-lg block mb-2 tracking-widest">
+            {"// 02"}
+          </span>
           Tech <span className="gradient-text">Stack</span>
         </motion.h2>
 
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid sm:grid-cols-2 gap-6 md:gap-10">
           {skillGroups.map((group, gi) => (
             <motion.div
               key={group.title}
-              className="p-6 rounded-xl border border-border bg-card card-hover glow-border-hover"
+              className="p-6 md:p-8 rounded-2xl border border-border bg-card/50 backdrop-blur-sm card-hover glow-border-hover shadow-xl"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}

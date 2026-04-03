@@ -55,8 +55,18 @@ const ProjectCard = ({ project, index, onOpen }: { project: Project; index: numb
     >
       <div className={`h-1 bg-gradient-to-r ${project.color}`} />
       <div className="p-6">
+        <div className="flex items-center gap-2 mb-3">
+          <span className="text-[10px] font-mono text-primary/60 bg-primary/5 px-1.5 py-0.5 rounded">
+            {`~/projects/${project.title.split(" ")[0].toLowerCase()}`}
+          </span>
+          <span className="ml-auto text-[10px] font-mono text-muted-foreground/40">
+            size: {Math.floor(Math.random() * 50) + 10}kb
+          </span>
+        </div>
         <div className="flex items-start justify-between mb-3">
-          <h3 className="text-xl font-bold text-foreground">{project.title}</h3>
+          <h3 className="text-xl font-bold text-foreground tracking-tight">
+            {project.title}
+          </h3>
           <div className="flex gap-2">
             {project.github && (
               <motion.a
@@ -190,9 +200,14 @@ const ProjectsSection = () => {
           Featured <span className="gradient-text">Projects</span>
         </motion.h2>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {projects.map((project, i) => (
-            <ProjectCard key={project.title} project={project} index={i} onOpen={() => setSelectedProject(project)} />
+            <ProjectCard
+              key={project.title}
+              project={project}
+              index={i}
+              onOpen={() => setSelectedProject(project)}
+            />
           ))}
         </div>
       </div>

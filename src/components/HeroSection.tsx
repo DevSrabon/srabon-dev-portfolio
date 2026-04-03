@@ -2,6 +2,7 @@ import profileImg from "@/assets/profile.jpeg";
 import { motion } from "framer-motion";
 import { ArrowDown, Download, Github, Linkedin, Mail } from "lucide-react";
 import { useEffect, useState } from "react";
+import FloatingCode from "./FloatingCode";
 
 const roles = [
   "Backend Software Developer",
@@ -48,6 +49,9 @@ const HeroSection = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-4">
+      {/* Background patterns */}
+      <FloatingCode />
+
       {/* Background grid */}
       <div
         className="absolute inset-0 opacity-[0.03]"
@@ -62,7 +66,7 @@ const HeroSection = () => {
       <div className="absolute top-1/4 -left-32 w-64 md:w-96 h-64 md:h-96 rounded-full bg-primary/10 blur-[100px]" />
       <div className="absolute bottom-1/4 -right-32 w-64 md:w-96 h-64 md:h-96 rounded-full bg-accent/10 blur-[100px]" />
 
-      <div className="container mx-auto text-center relative z-10 py-20">
+      <div className="container mx-auto text-center relative z-10 py-12 md:py-20 lg:py-32 px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -71,22 +75,22 @@ const HeroSection = () => {
         >
           {/* Profile Image */}
           <motion.div
-            className="mb-6 relative"
+            className="mb-8 relative"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
-            <div className="w-28 h-28 md:w-36 md:h-36 rounded-full overflow-hidden border-2 border-primary/50 glow-border">
+            <div className="w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-2 border-primary/50 glow-border p-1 bg-background/50 backdrop-blur-sm">
               <img
                 src={profileImg}
                 alt="Srabon Barua"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover rounded-full"
               />
             </div>
           </motion.div>
 
           <motion.p
-            className="font-mono text-primary mb-3 text-xs md:text-sm"
+            className="font-mono text-primary mb-4 text-xs sm:text-sm tracking-widest uppercase"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
@@ -94,29 +98,32 @@ const HeroSection = () => {
             {"// Hello, World! I'm"}
           </motion.p>
 
-          <h1 className="text-4xl md:text-6xl lg:text-8xl font-extrabold mb-4 tracking-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold mb-6 tracking-tighter leading-none">
             <span className="gradient-text">Srabon</span>{" "}
             <span className="text-foreground">Barua</span>
           </h1>
 
-          <div className="h-8 md:h-12 flex items-center justify-center font-mono text-base md:text-2xl text-muted-foreground">
+          <div className="h-10 sm:h-12 md:h-16 flex items-center justify-center font-mono text-sm sm:text-lg md:text-2xl text-muted-foreground bg-secondary/20 px-4 py-2 rounded-lg border border-border/50">
             <span className="text-code-green">{">"}</span>
-            <span className="mx-2">{text}</span>
+            <span className="mx-2 overflow-hidden whitespace-nowrap">
+              {text}
+            </span>
             <span className="animate-blink text-primary">|</span>
           </div>
 
           <motion.p
-            className="mt-4 md:mt-6 text-muted-foreground max-w-xl mx-auto text-xs md:text-base px-2"
+            className="mt-8 text-muted-foreground max-w-2xl mx-auto text-sm sm:text-base md:text-lg px-4 leading-relaxed"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6 }}
           >
-            3+ years building scalable backend systems, RESTful APIs, and
-            cloud-native applications
+            Backend Software Developer with 3+ years experience building
+            scalable systems, high-performance APIs, and cloud-native
+            architectures.
           </motion.p>
 
           <motion.div
-            className="flex items-center justify-center gap-3 mt-6"
+            className="flex items-center justify-center gap-4 mt-10"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8 }}
@@ -128,18 +135,18 @@ const HeroSection = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.1, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                className="p-2.5 md:p-3 rounded-xl border border-border bg-card hover:border-primary transition-colors glow-border-hover"
+                whileTap={{ scale: 0.9 }}
+                className="p-3 sm:p-4 rounded-2xl border border-border bg-card/50 backdrop-blur-sm hover:border-primary transition-all glow-border-hover shadow-lg"
                 aria-label={label}
               >
-                <Icon className="w-4 h-4 md:w-5 md:h-5 text-muted-foreground hover:text-primary transition-colors" />
+                <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-muted-foreground hover:text-primary transition-colors" />
               </motion.a>
             ))}
           </motion.div>
 
           {/* Download Resume Button */}
           <motion.div
-            className="mt-6"
+            className="mt-10"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1 }}
@@ -149,9 +156,9 @@ const HeroSection = () => {
               download
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center gap-2 px-5 py-2.5 md:px-6 md:py-3 rounded-xl bg-gradient-to-r from-primary to-accent text-primary-foreground font-semibold text-xs md:text-sm transition-all glow-border"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl bg-gradient-to-r from-primary via-accent to-primary bg-[length:200%_auto] animate-gradient text-primary-foreground font-bold text-sm sm:text-base transition-all shadow-xl shadow-primary/20 glow-border"
             >
-              <Download className="w-4 h-4" />
+              <Download className="w-5 h-5" />
               Download Resume
             </motion.a>
           </motion.div>
